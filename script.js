@@ -1,57 +1,57 @@
-const overlay=document.getElementById('overlay')
-const modal=document.getElementById('modal')
-const books=document.querySelector('.library-list');
-const myLibrary = [{
-    title: "Gicu",
-    author: "rapid",
-    pages: 100,
-    read: true,
-},{
-    title: "releu",
-    author: "sdsd",
-    pages: 88,
-    read: false, 
-},];
+const overlay=document.getElementById('overlay');
+const modal=document.getElementById('modal');
+
+class Book{
+    constructor ( title, author, pages){
+        this.title = form.title.value;
+        this.author = form.author.value;
+        this.pages = form.pages.value;
+    }
+}
+
+let library=[];
+let newBook;
+
+function addBooktoLibrary(){
+    event.preventDefault();
+    newBook = new Book(title,author,pages);
+    library.push(newBook);
+    render();
+    form.reset();
+}
+function render(){
+    const byebooks=document.querySelectorAll('.book')
+    //byebooks.removeChild(book) //continue
+    for(i=0;i<library.length;i++){
+        addBook(library[i]);
+    }   
+}
+
+function addBook(item){
+    const library = document.querySelector('.library-list')
+    const bookItem = document.createElement('div');
+    const title=document.createElement('div'); 
+    const author=document.createElement('div');
+    const pages=document.createElement('div');
+
+    bookItem.classList.add('bookk')
+
+    title.textContent=item.title;
+    title.classList.add('title')
+    bookItem.appendChild(title);
+
+    author.textContent=item.author;
+    author.classList.add('author')
+    bookItem.appendChild(author);
+    
+    pages.textContent=item.pages;
+    pages.classList.add('pages')
+    bookItem.appendChild(pages);
+    
+    library.appendChild(bookItem);
 
 
-function createbookElement(el,content,className){
-    const bookElem = document.createElement(el);
-    bookElem.textContent=content;
-    bookElem.setAttribute("class",className);
-    return bookElem;
 }
-function createBookItem(book,index) {
-    const bookItem=document.createElement("div");
-    bookItem.setAttribute("id",index);
-    bookItem.setAttribute("key",index);
-    bookItem.setAttribute("class", 'bookk')
-    bookItem.appendChild(
-        createbookElement("h1", `Title: ${book.title}`, "book-title"));
-    bookItem.appendChild(
-        createbookElement("h1", `Author: ${book.author}`, "book-author"));
-    bookItem.appendChild(
-        createbookElement("h1", `Pages: ${book.pages}`, "book-pages"));
-
-    books.insertAdjacentElement('afterbegin',bookItem);
-}
-function renderBooks(){
-    myLibrary.map((book, index)=>{
-        createBookItem(book,index);
-    })
-}
-function addBookToLibrary(title,author,pages){
-    myLibrary.push(new Book(title,author,pages))
-    renderBooks();
-}
-const addBookForm=document.querySelector('.add-book-form')
-addBookForm.addEventListener('submit',(e)=>{
-    e.preventDefault();
-    const data=new FormData(e.target);
-    let newBook={};
-    for(let [name,value] of data){
-        newBook[name]=value;}
-
-})
 
 const button=document.querySelector('.add');
 
@@ -59,7 +59,8 @@ button.addEventListener('click',()=>{
 toggle_active()})
 const submit=document.querySelector('form button');
 submit.addEventListener('click',()=>{
-    toggle_inactive()})
+    toggle_inactive()
+addBooktoLibrary()})
 function toggle_active(){
     overlay.classList.add('active');
     modal.classList.add('active');
