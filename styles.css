@@ -1,11 +1,18 @@
 header{
-    text-align: center;
-    background-color: aqua;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 800;
+    font-size: 2rem;
+    color: rgb(255, 255, 255);
+    background-color: rgb(8, 61, 61);
     margin-top: 0;
     height: 100px;
 }
 body{
+    background-color: rgb(151, 211, 211);
     margin: 0;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 form{
     display: flex;
@@ -17,6 +24,15 @@ main{
     flex-direction: column;
     align-items: center;
     height: 80vw;
+}
+.add{
+    border-radius: 10px;
+    padding: 10px;
+    font-weight: 700;
+    background-color: green;
+    font-size: 2rem;
+    margin-bottom: 40px;
+    margin-top: 20px;
 }
 .modal{
     position: fixed;
@@ -62,4 +78,26 @@ main{
     border-radius: 5px;
     border: 2px solid rgb(216, 52, 79);
     margin: 3px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+.title{
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+}
+.author{
+    text-align: center;
+}
+.pages{
+    text-align: center;
+}
+
+.removebutton{
+    align-items: center;
+    font-weight: 800;
+    color: rgb(255, 255, 255);
+    border-radius: 10px;
+    background-color: rgb(185, 35, 35);
 }

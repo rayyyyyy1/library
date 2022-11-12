@@ -20,19 +20,22 @@ function addBooktoLibrary(){
     form.reset();
 }
 function render(){
-    const byebooks=document.querySelectorAll('.book')
-    //byebooks.removeChild(book) //continue
+    const librarium=document.querySelector('.library-list')
+    const byebooks=document.querySelectorAll('.bookk')
+    byebooks.forEach( byebook => {librarium.removeChild(byebook)});
     for(i=0;i<library.length;i++){
         addBook(library[i]);
     }   
 }
 
 function addBook(item){
-    const library = document.querySelector('.library-list')
+    const libraryy = document.querySelector('.library-list')
     const bookItem = document.createElement('div');
     const title=document.createElement('div'); 
     const author=document.createElement('div');
     const pages=document.createElement('div');
+    const remove=document.createElement('button');
+    const edit=document.createElement('button');
 
     bookItem.classList.add('bookk')
 
@@ -47,8 +50,29 @@ function addBook(item){
     pages.textContent=item.pages;
     pages.classList.add('pages')
     bookItem.appendChild(pages);
+
+    edit.addEventListener('click', () => {
+        toggle_active();
+        form.title.value=item.title;
+        form.author.value=item.author;
+        form.pages.value=item.pages;
+        library.splice(library.indexOf(item),1);
+    })
+
+    edit.classList.add('edit')
+    edit.textContent='EDIT';
+    bookItem.appendChild(edit);
+
+    remove.addEventListener('click',() =>{
+        library.splice(library.indexOf(item),1);
+        render();
+    })
+    remove.textContent='REMOVE';
+    remove.classList.add('removebutton')
+    bookItem.appendChild(remove);
+
     
-    library.appendChild(bookItem);
+    libraryy.appendChild(bookItem);
 
 
 }
